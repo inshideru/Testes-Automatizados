@@ -30,6 +30,7 @@ abstract class Campo
     public function addLabel(Label $label)
     {
         $this->label = $label;
+        return $this;
     }
 
     public function setDivGroupClass($class)

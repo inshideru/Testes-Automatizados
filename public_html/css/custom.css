@@ -41,3 +41,45 @@ code {
 table a:not(.btn), .table a:not(.btn) {
     text-decoration: none;
 }
+
+.navbar-inverse{
+    background-color: #4f5151;
+}
+
+.navbar-brand {
+    color: #dbdbdb;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color: #dbdbdb;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #dbdbdb;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #808080;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #808080;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@media (max-width: 767px){
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+        color: #dbdbdb;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>.dropdown-header {
+        border-color: #808080;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+        background-color: #808080;
+    }
+}

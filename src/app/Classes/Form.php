@@ -27,6 +27,7 @@ class Form
     public function addCampo(Campo $campo)
     {
         $this->campos[] = $campo;
+        return $this;
     }
 
     public function render()
