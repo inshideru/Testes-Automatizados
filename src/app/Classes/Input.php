@@ -8,8 +8,14 @@
 
 namespace app\Classes;
 
-class Input extends Campo
+use app\Interfaces\ElementoInterface;
+
+class Input implements ElementoInterface
 {
+    protected $label;
+    protected $atributos;
+    protected $divGroupClass;
+
     public function render()
     {
         $string = '';
@@ -23,5 +29,28 @@ class Input extends Campo
         }
         echo '<input ' . $string . '> ';
         echo '</div>';
+    }
+
+    public function set($atributo, $valor)
+    {
+        $this->atributos[$atributo] = $valor;
+        return $this;
+    }
+
+    public function get($atributo)
+    {
+        return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($class)
+    {
+        $this->divGroupClass = $class;
+        return $this;
     }
 }

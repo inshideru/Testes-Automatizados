@@ -10,9 +10,10 @@ namespace app\Classes;
 
 
 
-class Label extends Campo
+class Label
 {
     private $text;
+    private $atributos = array();
 
     public function __construct($text)
     {
@@ -27,4 +28,15 @@ class Label extends Campo
         }
         echo '<label '. $string . '">' . $this->text . '</label>';
     }
+    public function set($atributo, $valor)
+    {
+        $this->atributos[$atributo] = $valor;
+        return $this;
+    }
+
+    public function get($atributo)
+    {
+        return $this->atributos[$atributo];
+    }
+
 }

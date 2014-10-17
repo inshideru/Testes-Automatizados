@@ -9,8 +9,13 @@
 namespace app\Classes;
 
 
-class Select extends Campo
+use app\Interfaces\ElementoInterface;
+
+class Select implements ElementoInterface
 {
+    private $label;
+    private $atributos;
+    private $divGroupClass;
     private $options = array();
 
     public function addOption($value, $text)
@@ -37,4 +42,27 @@ class Select extends Campo
         echo '</select>';
         echo '</div>';
     }
+    public function set($atributo, $valor)
+    {
+        $this->atributos[$atributo] = $valor;
+        return $this;
+    }
+
+    public function get($atributo)
+    {
+        return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($class)
+    {
+        $this->divGroupClass = $class;
+        return $this;
+    }
+
 }

@@ -9,9 +9,14 @@
 namespace app\Classes;
 
 
-class TextArea extends Campo
+use app\Interfaces\ElementoInterface;
+
+class TextArea implements ElementoInterface
 {
     private $text;
+    protected $label;
+    protected $atributos;
+    protected $divGroupClass;
 
     public function addText($text)
     {
@@ -21,12 +26,6 @@ class TextArea extends Campo
 
     public function render()
     {
-        /*
-         * <textarea rows="4" cols="50">
-        Texto
-        </textarea>
-         */
-
         $string = '';
         foreach ($this->atributos as $atributo => $valor) {
             $string .= $atributo . '="' . $valor . '" ';
@@ -40,5 +39,28 @@ class TextArea extends Campo
         echo $this->text;
         echo '</textarea>';
         echo '</div>';
+    }
+
+    public function set($atributo, $valor)
+    {
+        $this->atributos[$atributo] = $valor;
+        return $this;
+    }
+
+    public function get($atributo)
+    {
+        return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($class)
+    {
+        $this->divGroupClass = $class;
+        return $this;
     }
 }

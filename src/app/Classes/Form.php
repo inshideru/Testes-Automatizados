@@ -8,7 +8,10 @@
 
 namespace app\Classes;
 
-class Form
+use app\Interfaces\ElementoInterface;
+use app\Interfaces\FormInterface;
+
+class Form implements FormInterface
 {
     private $atributos = array();
     private $campos = array();
@@ -24,7 +27,7 @@ class Form
         return $this->atributos[$atributo];
     }
 
-    public function addCampo(Campo $campo)
+    public function addCampo(ElementoInterface $campo)
     {
         $this->campos[] = $campo;
         return $this;

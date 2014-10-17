@@ -6,7 +6,7 @@
  * Time: 13:11
  */
 
-define('CLASS_DIR', 'src/');
+define('CLASS_DIR', 'src\\');
 
 function autoload($className)
 {
