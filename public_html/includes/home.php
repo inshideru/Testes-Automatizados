@@ -18,7 +18,7 @@
         $form = new \app\Classes\Form($validator, array(
             'id' => 'form-um',
             'class' => 'form-horizontal',
-            'action' => '""',
+            'action' => '',
             'method' => 'post'
         ));
 
@@ -50,7 +50,7 @@
         $parentesco->setDivGroupClass('form-group');
         $parentesco
             ->addLabel($labelParentesco)
-            ->addOption('""','Escolha uma opção')
+            ->addOption('','Escolha uma opção')
             ->addOption('pai','Pai')
             ->addOption('mae','Mãe')
             ->addOption('irmao','Irmão');
@@ -95,7 +95,7 @@
 
         $form->setFieldset($fielset);
         $form->render();
-        
+
         ?>
     </div>
     <div class="col-md-6">
