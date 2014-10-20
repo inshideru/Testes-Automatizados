@@ -9,13 +9,16 @@
 namespace app\Classes;
 
 use app\Interfaces\ElementoInterface;
+use app\Interfaces\FieldsetInterface;
 use app\Interfaces\FormInterface;
 
 class Form implements FormInterface
 {
     private $validator;
     private $atributos = array();
-    private $campos = array();
+
+    /** @var  FieldsetInterface */
+    private $fieldset;
 
     public function __construct(Validator $validator, array $atributos)
     {
@@ -34,28 +37,25 @@ class Form implements FormInterface
         return $this->atributos[$atributo];
     }
 
-    public function createField(ElementoInterface $field, array $atributos)
+    /**
+     * @param FieldsetInterface $fieldset
+     */
+    public function setFieldset(FieldsetInterface $fieldset)
     {
-        foreach ($atributos as $atributo => $valor) {
-            $field->set($atributo, $valor);
-        }
-
-        return $field;
+        $this->fieldset = $fieldset;
     }
 
     public function render()
     {
-        $string = '';
+        $parametros = '';
         foreach ($this->atributos as $atributo => $valor) {
-            $string .= $atributo . '="' . $valor . '" ';
+            $parametros .= $atributo . '="' . $valor . '" ';
         }
 
-        echo '<form ' . $string . '>';
+        echo '<form ' . $parametros . '>';
 
-        foreach ($this->campos as $campo) {
-            $campo->render();
-            echo '<br>';
-        }
+        $this->fieldset->render();
+
         echo '</form>';
     }
 }

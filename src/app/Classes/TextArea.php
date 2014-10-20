@@ -14,8 +14,9 @@ use app\Interfaces\ElementoInterface;
 class TextArea implements ElementoInterface
 {
     private $text;
-    protected $label;
-    protected $atributos;
+    private $label;
+    private $atributos;
+    private $divGroupClass;
 
     public function addText($text)
     {
@@ -25,14 +26,19 @@ class TextArea implements ElementoInterface
 
     public function render()
     {
-        $string = '';
+        $parametros = '';
         foreach ($this->atributos as $atributo => $valor) {
-            $string .= $atributo . '="' . $valor . '" ';
+            $parametros .= $atributo . '="' . $valor . '" ';
         }
 
-        echo '<textarea ' . $string . '> ';
+        echo '<div class="' . $this->divGroupClass . '">';
+        if ($this->label) {
+            $this->label->render();
+        }
+        echo '<textarea ' . $parametros . '> ';
         echo $this->text;
         echo '</textarea>';
+        echo '</div>';
     }
 
     public function set($atributo, $valor)
@@ -44,5 +50,17 @@ class TextArea implements ElementoInterface
     public function get($atributo)
     {
         return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($cssClass)
+    {
+        $this->divGroupClass = $cssClass;
+        return $this;
     }
 }

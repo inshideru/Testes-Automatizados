@@ -16,6 +16,7 @@ class Select implements ElementoInterface
     private $label;
     private $atributos;
     private $options = array();
+    private $divGroupClass;
 
     public function addOption($value, $text)
     {
@@ -25,16 +26,21 @@ class Select implements ElementoInterface
 
     public function render()
     {
-        $string = '';
+        $parametros = '';
         foreach ($this->atributos as $atributo => $valor) {
-            $string .= $atributo . '="' . $valor . '" ';
+            $parametros .= $atributo . '="' . $valor . '" ';
         }
 
-        echo '<select ' . $string . '>';
+        echo '<div class="' . $this->divGroupClass . '">';
+        if ($this->label) {
+            $this->label->render();
+        }
+        echo '<select ' . $parametros . '>';
             foreach ($this->options as $value => $text) {
                 echo '<option value="'.$value.'">'.$text.'</option>';
             }
         echo '</select>';
+        echo '</div>';
     }
     public function set($atributo, $valor)
     {
@@ -45,5 +51,17 @@ class Select implements ElementoInterface
     public function get($atributo)
     {
         return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($cssClass)
+    {
+        $this->divGroupClass = $cssClass;
+        return $this;
     }
 }

@@ -71,7 +71,7 @@ $conteudo = $route();
 
 <div class="footer">
     <div class="container">
-        <p class="text-muted">Bem-vindo à <a href="/">Design Patterns com PHP</a> - Todos os direitos reservados
+        <p class="text-muted"><a href="https://github.com/inshideru/Php-Design-Patterns---Dinamic-Form-Fase-2">GitHub - Design Patterns com PHP</a> - Todos os direitos reservados
             - <?php echo date('Y'); ?></p>
     </div>
 </div>

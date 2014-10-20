@@ -8,20 +8,25 @@
 
 namespace app\Classes;
 
+use app\Interfaces\LabelInterface;
 
-
-class Label
+class Label implements LabelInterface
 {
     private $text;
     private $atributos = array();
 
+    public function __construct($texto)
+    {
+        $this->text = $texto;
+    }
+
     public function render()
     {
-        $string = '';
+        $parametros = '';
         foreach ($this->atributos as $atributo => $valor) {
-            $string .= $atributo . '=' . $valor . ' ';
+            $parametros .= $atributo . '=' . $valor . ' ';
         }
-        echo '<label '. $string . '">' . $this->text . '</label>';
+        echo '<label '. $parametros . '">' . $this->text . '</label>';
     }
     public function set($atributo, $valor)
     {

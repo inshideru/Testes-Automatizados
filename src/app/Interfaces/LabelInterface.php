@@ -2,19 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: Vinicius
- * Date: 17/10/14
- * Time: 09:20
+ * Date: 20/10/14
+ * Time: 15:16
  */
 
 namespace app\Interfaces;
 
-use app\Classes\Label;
 
-interface ElementoInterface
+interface LabelInterface
 {
     public function set($campo, $valor);
     public function get($valor);
-    public function addLabel(Label $label);
-    public function setDivGroupClass($cssClass);
     public function render();
 } 

@@ -13,16 +13,22 @@ use app\Interfaces\ElementoInterface;
 class Input implements ElementoInterface
 {
     private $tipo;
-    protected $label;
-    protected $atributos;
+    private $label;
+    private $atributos;
+    private $divGroupClass;
 
     public function render()
     {
-        $string = '';
+        $parametros = '';
         foreach ($this->atributos as $atributo => $valor) {
-            $string .= $atributo . '="' . $valor . '" ';
+            $parametros .= $atributo . '="' . $valor . '" ';
         }
-        echo '<input ' . $string . '> ';
+        echo '<div class="' . $this->divGroupClass . '">';
+        if ($this->label) {
+            $this->label->render();
+        }
+        echo '<input ' . $parametros . '> ';
+        echo '</div>';
     }
 
     public function set($atributo, $valor)
@@ -34,6 +40,18 @@ class Input implements ElementoInterface
     public function get($atributo)
     {
         return $this->atributos[$atributo];
+    }
+
+    public function addLabel(Label $label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    public function setDivGroupClass($cssClass)
+    {
+        $this->divGroupClass = $cssClass;
+        return $this;
     }
 
 }
