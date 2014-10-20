@@ -50,3 +50,4 @@ $route = function () use ($paginas) {
 
     return $go;
 };
+

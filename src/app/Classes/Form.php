@@ -13,8 +13,15 @@ use app\Interfaces\FormInterface;
 
 class Form implements FormInterface
 {
+    private $validator;
     private $atributos = array();
     private $campos = array();
+
+    public function __construct(Validator $validator, array $atributos)
+    {
+        $this->validator = $validator;
+        $this->atributos = $atributos;
+    }
 
     public function set($atributo, $valor)
     {
@@ -27,10 +34,13 @@ class Form implements FormInterface
         return $this->atributos[$atributo];
     }
 
-    public function addCampo(ElementoInterface $campo)
+    public function createField(ElementoInterface $field, array $atributos)
     {
-        $this->campos[] = $campo;
-        return $this;
+        foreach ($atributos as $atributo => $valor) {
+            $field->set($atributo, $valor);
+        }
+
+        return $field;
     }
 
     public function render()
@@ -41,8 +51,10 @@ class Form implements FormInterface
         }
 
         echo '<form ' . $string . '>';
+
         foreach ($this->campos as $campo) {
             $campo->render();
+            echo '<br>';
         }
         echo '</form>';
     }

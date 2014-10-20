@@ -15,11 +15,6 @@ class Label
     private $text;
     private $atributos = array();
 
-    public function __construct($text)
-    {
-        $this->text = $text;
-    }
-
     public function render()
     {
         $string = '';

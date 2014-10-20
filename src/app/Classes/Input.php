@@ -12,9 +12,9 @@ use app\Interfaces\ElementoInterface;
 
 class Input implements ElementoInterface
 {
+    private $tipo;
     protected $label;
     protected $atributos;
-    protected $divGroupClass;
 
     public function render()
     {
@@ -22,13 +22,7 @@ class Input implements ElementoInterface
         foreach ($this->atributos as $atributo => $valor) {
             $string .= $atributo . '="' . $valor . '" ';
         }
-
-        echo '<div class="' . $this->divGroupClass . '">';
-        if ($this->label) {
-            $this->label->render();
-        }
         echo '<input ' . $string . '> ';
-        echo '</div>';
     }
 
     public function set($atributo, $valor)
@@ -42,15 +36,4 @@ class Input implements ElementoInterface
         return $this->atributos[$atributo];
     }
 
-    public function addLabel(Label $label)
-    {
-        $this->label = $label;
-        return $this;
-    }
-
-    public function setDivGroupClass($class)
-    {
-        $this->divGroupClass = $class;
-        return $this;
-    }
 }

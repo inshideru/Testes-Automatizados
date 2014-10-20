@@ -15,6 +15,4 @@ interface ElementoInterface
     public function set($campo, $valor);
     public function get($valor);
     public function render();
-    public function addLabel(Label $label);
-    public function setDivGroupClass($class);
 } 
