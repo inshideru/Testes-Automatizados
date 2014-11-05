@@ -36,50 +36,57 @@
                 'type' => 'text',
                 'name' => 'nome',
                 'id' => 'nome',
-                'class' => 'form-control',
-                'placeholder' => 'Informe seu nome'
+                'class' => 'form-control'
             )
         );
+        $labelValor = new \app\Classes\Label('Valor');
+        $labelValor->set('for', 'valor')->set('class','control-label');
 
-        $labelParentesco = new \app\Classes\Label('Parentesco');
-        $labelParentesco
-            ->set('for','parentesco')
-            ->set('class','control-label');
+        $valor = new \app\Classes\Input();
+        $valor->setDivGroupClass('form-group');
+        $valor->addLabel($labelValor);
 
-        $parentesco = new \app\Classes\Select();
-        $parentesco->setDivGroupClass('form-group');
-        $parentesco
-            ->addLabel($labelParentesco)
-            ->addOption('','Escolha uma opção')
-            ->addOption('pai','Pai')
-            ->addOption('mae','Mãe')
-            ->addOption('irmao','Irmão');
-
-        $fielset->createField($parentesco,
+        $fielset->createField($valor,
             array(
-                'name' => 'parentesco',
-                'id' => 'parentesco',
+                'type' => 'text',
+                'name' => 'valor',
+                'id' => 'valor',
                 'class' => 'form-control'
             )
         );
 
-        $labelMensagem = new \app\Classes\Label('Observações');
-        $labelMensagem
-            ->set('for','mensagem')
+        $labelDescricao = new \app\Classes\Label('Descrição');
+        $labelDescricao->set('for', 'descricao')->set('class','control-label');
+
+        $descricao = new \app\Classes\Input();
+        $descricao->setDivGroupClass('form-group');
+        $descricao->addLabel($labelDescricao);
+
+        $fielset->createField($descricao,
+            array(
+                'type' => 'text',
+                'name' => 'descricao',
+                'id' => 'descricao',
+                'class' => 'form-control'
+            )
+        );
+
+        $labelCategoria = new \app\Classes\Label('Categoria');
+        $labelCategoria
+            ->set('for','parentesco')
             ->set('class','control-label');
 
-        $mensagem = new \app\Classes\TextArea();
-        $mensagem
-            ->addLabel($labelMensagem)
-            ->addText('Observações')
-            ->setDivGroupClass('form-group');
+        $categoria = new \app\Classes\Select();
+        $categoria->setDivGroupClass('form-group');
+        $categoria
+            ->addLabel($labelCategoria)
+            ->addOption('','Escolha uma opção');
 
-        $fielset->createField($mensagem,
+        $fielset->createField($categoria,
             array(
-                'name' => 'mensagem',
-                'id' => 'mensagem',
-                'class' => 'form-control',
-                'rows' => '5'
+                'name' => 'categoria',
+                'id' => 'categoria',
+                'class' => 'form-control'
             )
         );
 
@@ -93,7 +100,17 @@
             )
         );
 
+        $opcoes = new \app\Db\OpcoesDAO();
+
+        $dados = array(
+            'nome' => 'Martelo',
+            'valor' => 12.90,
+            'descricao' => 'Martelo com cabo enborrachado.',
+            'select' => $opcoes->fullList()
+        );
+
         $form->setFieldset($fielset);
+        $form->popular($dados);
         $form->render();
 
         ?>

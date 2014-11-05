@@ -45,6 +45,11 @@ class Form implements FormInterface
         $this->fieldset = $fieldset;
     }
 
+    public function popular($dados = array())
+    {
+        $this->fieldset->setFieldValue($dados);
+    }
+
     public function render()
     {
         $parametros = '';
