@@ -1,0 +1,10 @@
+{
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "autoload": {
+        "psr-0": {"FormDinamico": "src"}
+    },
+    "require": {
+        "phpunit/phpunit": "4.2.6"}
+}

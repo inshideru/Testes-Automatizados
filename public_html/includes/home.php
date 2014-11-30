@@ -13,21 +13,21 @@
 <div class="row">
     <div class="col-md-6">
         <?php
-        $request = new \app\Classes\Request();
-        $validator = new \app\Classes\Validator($request);
-        $form = new \app\Classes\Form($validator, array(
+        $request = new \FormDinamico\Classes\Request();
+        $validator = new \FormDinamico\Classes\Validator($request);
+        $form = new \FormDinamico\Classes\Form($validator, array(
             'id' => 'form-um',
             'class' => 'form-horizontal',
             'action' => '',
             'method' => 'post'
         ));
 
-        $fielset = new \app\Classes\Fieldset();
+        $fielset = new \FormDinamico\Classes\Fieldset();
 
-        $labelNome = new \app\Classes\Label('Nome');
+        $labelNome = new \FormDinamico\Classes\Label('Nome');
         $labelNome->set('for', 'nome')->set('class','control-label');
 
-        $nome = new \app\Classes\Input();
+        $nome = new \FormDinamico\Classes\Input();
         $nome->setDivGroupClass('form-group');
         $nome->addLabel($labelNome);
 
@@ -39,10 +39,10 @@
                 'class' => 'form-control'
             )
         );
-        $labelValor = new \app\Classes\Label('Valor');
+        $labelValor = new \FormDinamico\Classes\Label('Valor');
         $labelValor->set('for', 'valor')->set('class','control-label');
 
-        $valor = new \app\Classes\Input();
+        $valor = new \FormDinamico\Classes\Input();
         $valor->setDivGroupClass('form-group');
         $valor->addLabel($labelValor);
 
@@ -55,10 +55,10 @@
             )
         );
 
-        $labelDescricao = new \app\Classes\Label('Descrição');
+        $labelDescricao = new \FormDinamico\Classes\Label('Descrição');
         $labelDescricao->set('for', 'descricao')->set('class','control-label');
 
-        $descricao = new \app\Classes\Input();
+        $descricao = new \FormDinamico\Classes\Input();
         $descricao->setDivGroupClass('form-group');
         $descricao->addLabel($labelDescricao);
 
@@ -71,12 +71,12 @@
             )
         );
 
-        $labelCategoria = new \app\Classes\Label('Categoria');
+        $labelCategoria = new \FormDinamico\Classes\Label('Categoria');
         $labelCategoria
             ->set('for','parentesco')
             ->set('class','control-label');
 
-        $categoria = new \app\Classes\Select();
+        $categoria = new \FormDinamico\Classes\Select();
         $categoria->setDivGroupClass('form-group');
         $categoria
             ->addLabel($labelCategoria)
@@ -90,7 +90,7 @@
             )
         );
 
-        $enviar = new \app\Classes\Input();
+        $enviar = new \FormDinamico\Classes\Input();
         $enviar
             ->setDivGroupClass('form-group');
         $fielset->createField($enviar,
@@ -100,7 +100,7 @@
             )
         );
 
-        $opcoes = new \app\Db\OpcoesDAO();
+        $opcoes = new \FormDinamico\Db\OpcoesDAO();
 
         $dados = array(
             'nome' => 'Martelo',
