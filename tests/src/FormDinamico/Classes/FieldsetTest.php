@@ -19,4 +19,19 @@ class FieldsetTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $elemento);
     }
+
+
+    public function testSeTemCreateField()
+    {
+        $this->assertTrue(method_exists('FormDinamico\Classes\Fieldset', 'createField'),
+            'A classe nao tem o metodo createField'
+        );
+    }
+
+    public function testSeTemRender()
+    {
+        $this->assertTrue(method_exists('FormDinamico\Classes\Fieldset', 'render'),
+            'A classe nao tem o metodo render'
+        );
+    }
 } 

@@ -17,6 +17,9 @@ class OpcoesDAO
         $this->db = new \PDO('sqlite:../src/FormDinamico/Db/opcoes.sqlite3');
     }
 
+    /**
+     * @return array
+     */
     public function fullList()
     {
         return $this->db->query("SELECT * from categoria")->fetchAll();
