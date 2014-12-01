@@ -16,6 +16,11 @@ class Fieldset implements FieldsetInterface
     private $fields = array();
     private $erros = array();
 
+    /**
+     * @param ElementoInterface $field
+     * @param array $atributos
+     * @return ElementoInterface
+     */
     public function createField(ElementoInterface $field, array $atributos)
     {
         foreach ($atributos as $atributo => $valor) {

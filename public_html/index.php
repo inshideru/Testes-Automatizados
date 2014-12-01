@@ -71,7 +71,7 @@ $conteudo = $route();
 
 <div class="footer">
     <div class="container">
-        <p class="text-muted"><a href="https://github.com/inshideru/PHP-Formulario-Dinamico">GitHub - Design Patterns com PHP</a>
+        <p class="text-muted"><a href="https://github.com/inshideru/Testes-Automatizados">GitHub - Testes Automatizados com PHP</a>
             - <?php echo date('Y'); ?></p>
     </div>
 </div>
