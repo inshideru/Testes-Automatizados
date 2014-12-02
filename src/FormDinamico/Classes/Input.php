@@ -12,7 +12,6 @@ use FormDinamico\Interfaces\ElementoInterface;
 
 class Input implements ElementoInterface
 {
-    private $tipo;
     private $label;
     private $atributos;
     private $divGroupClass;

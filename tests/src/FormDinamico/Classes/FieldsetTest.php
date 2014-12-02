@@ -34,4 +34,19 @@ class FieldsetTest extends \PHPUnit_Framework_TestCase
             'A classe nao tem o metodo render'
         );
     }
+
+    public function testFieldRender()
+    {
+        $field = $this->getMock('\FormDinamico\Classes\Input',array('render'));
+        $field
+            ->expects($this->any())
+            ->method('render')
+            ->willReturn('Renderizado');
+
+        $fieldSet = new Fieldset();
+        $fieldSet->createField($field,array());
+
+        $this->assertEquals('Renderizado', $fieldSet->getFields()[0]->render());
+
+    }
 } 

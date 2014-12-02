@@ -30,6 +30,14 @@ class Fieldset implements FieldsetInterface
         return $field;
     }
 
+    /**
+     * @return array
+     */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
     public function setFieldValue($dados)
     {
         foreach ($this->fields as $field) {

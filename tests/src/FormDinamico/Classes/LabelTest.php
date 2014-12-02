@@ -31,4 +31,4 @@ class LabelTest extends \PHPUnit_Framework_TestCase
         $label->set('atributo', 'valor');
         $this->assertEquals('valor', $label->get('atributo'));
     }
-} 
+}
