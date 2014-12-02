@@ -11,6 +11,12 @@ namespace FormDinamico\Classes;
 
 class FormTest extends \PHPUnit_Framework_TestCase
 {
+    public function testSeFormInterface()
+    {
+        $form = new Form(array());
+        $this->assertInstanceOf('FormDinamico\Interfaces\FormInterface', $form);
+    }
+
     public function testSeTemSetFieldset()
     {
         $this->assertTrue(method_exists('FormDinamico\Classes\Form', 'setFieldset'),
@@ -30,14 +36,9 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $this->assertClassHasAttribute('atributos', 'FormDinamico\Classes\Form');
     }
 
-    public function testSeTemValidator()
-    {
-        $this->assertClassHasAttribute('validator', 'FormDinamico\Classes\Form');
-    }
-
     public function testSetterAndGetter()
     {
-        $form = new Form(new Validator(new Request()), array());
+        $form = new Form(array());
 
         $form->set('atributo', 'valor');
         $this->assertEquals('valor', $form->get('atributo'));
@@ -45,8 +46,9 @@ class FormTest extends \PHPUnit_Framework_TestCase
 
     public function testPopular()
     {
-        $form = new Form(new Validator(new Request()), array());
-        $form->setFieldset(new Fieldset());
+        $form = new Form(array());
+        $fieldSet = $this->getMock('\FormDinamico\Classes\Fieldset');
+        $form->setFieldset($fieldSet);
         $parametro = array();
         $form->popular($parametro);
 

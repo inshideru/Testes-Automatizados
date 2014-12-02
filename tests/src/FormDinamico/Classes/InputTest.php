@@ -20,14 +20,16 @@ class InputTest extends \PHPUnit_Framework_TestCase
     public function testAddLabelRetornaInput()
     {
         $input = new Input();
-        $input = $input->addLabel(new Label('texto'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $input = $input->addLabel($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\Input', $input);
     }
     public function testSetDivGroupClassRetornaInput()
     {
         $input = new Input();
-        $input = $input->setDivGroupClass(new Label('class'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $input = $input->setDivGroupClass($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\Input', $input);
     }

@@ -20,14 +20,16 @@ class TextAreaTest extends \PHPUnit_Framework_TestCase
     public function testAddLabelRetornaTextArea()
     {
         $textArea = new TextArea();
-        $textArea = $textArea->addLabel(new Label('texto'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $textArea = $textArea->addLabel($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\TextArea', $textArea);
     }
     public function testSetDivGroupClassRetornaTextArea()
     {
         $textArea = new TextArea();
-        $textArea = $textArea->setDivGroupClass(new Label('class'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $textArea = $textArea->setDivGroupClass($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\TextArea', $textArea);
     }

@@ -13,9 +13,7 @@
 <div class="row">
     <div class="col-md-6">
         <?php
-        $request = new \FormDinamico\Classes\Request();
-        $validator = new \FormDinamico\Classes\Validator($request);
-        $form = new \FormDinamico\Classes\Form($validator, array(
+        $form = new \FormDinamico\Classes\Form(array(
             'id' => 'form-um',
             'class' => 'form-horizontal',
             'action' => '',

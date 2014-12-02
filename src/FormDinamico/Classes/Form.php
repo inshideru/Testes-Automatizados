@@ -8,21 +8,19 @@
 
 namespace FormDinamico\Classes;
 
-use FormDinamico\Interfaces\ElementoInterface;
 use FormDinamico\Interfaces\FieldsetInterface;
 use FormDinamico\Interfaces\FormInterface;
 
 class Form implements FormInterface
 {
-    private $validator;
+
     private $atributos = array();
 
     /** @var  FieldsetInterface */
     private $fieldset;
 
-    public function __construct(Validator $validator, array $atributos)
+    public function __construct(array $atributos)
     {
-        $this->validator = $validator;
         $this->atributos = $atributos;
     }
 

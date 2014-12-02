@@ -11,11 +11,17 @@ namespace FormDinamico\Classes;
 
 class FieldsetTest extends \PHPUnit_Framework_TestCase
 {
+    public function testSeFieldsetInterface()
+    {
+        $fieldSet = new Fieldset();
+        $this->assertInstanceOf('FormDinamico\Interfaces\FieldsetInterface', $fieldSet);
+    }
+
     public function testRetornaElementoInterface()
     {
         $fieldSet = new Fieldset();
-
-        $elemento = $fieldSet->createField(new Input(), array());
+        $input = $this->getMock('\FormDinamico\Classes\Input',array('render'));
+        $elemento = $fieldSet->createField($input, array());
 
         $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $elemento);
     }

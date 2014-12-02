@@ -11,6 +11,12 @@ namespace FormDinamico\Classes;
 
 class SelectTest extends \PHPUnit_Framework_TestCase
 {
+    public function testSeElementoInterface()
+    {
+        $select = new Select();
+        $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $select);
+    }
+
     public function testAddOptionRetornaSelect()
     {
         $select = new Select();
@@ -22,7 +28,8 @@ class SelectTest extends \PHPUnit_Framework_TestCase
     public function testAddLabelRetornaSelect()
     {
         $select = new Select();
-        $select = $select->addLabel(new Label('texto'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $select = $select->addLabel($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\Select', $select);
     }
@@ -30,7 +37,8 @@ class SelectTest extends \PHPUnit_Framework_TestCase
     public function testSetDivGroupClassRetornaSelect()
     {
         $select = new Select();
-        $select = $select->setDivGroupClass(new Label('class'));
+        $label = $this->getMockBuilder('FormDinamico\Classes\Label')->disableOriginalConstructor()->getMock();
+        $select = $select->setDivGroupClass($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\Select', $select);
     }
