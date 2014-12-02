@@ -13,6 +13,7 @@ class OpcoesDAOTest extends \PHPUnit_Framework_TestCase
 {
     public function testAtributoDb()
     {
+        $this->assertTrue(class_exists('FormDinamico\Db\OpcoesDAO'));
         $this->assertClassHasAttribute('db', 'FormDinamico\Db\OpcoesDAO');
     }
 } 
