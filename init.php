@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Vinicius
- * Date: 11/10/14
- * Time: 13:11
- */
+ini_set('display_errors', true);
+error_reporting(E_ALL | E_STRICT);
 
 require __DIR__.'../vendor/autoload.php';
 

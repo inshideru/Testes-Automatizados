@@ -98,7 +98,9 @@
             )
         );
 
-        $opcoes = new \FormDinamico\Db\OpcoesDAO();
+        $opcoes = new \FormDinamico\Db\OpcaoDAO();
+        $db = new \PDO('sqlite:../src/FormDinamico/Db/opcoes.sqlite3');
+        $opcoes->setDbAdapter($db);
 
         $dados = array(
             'nome' => 'Martelo',

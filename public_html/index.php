@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL | E_STRICT);
 require '../init.php';
 $conteudo = $route();
 ?>
@@ -11,7 +9,7 @@ $conteudo = $route();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Design Patterns com Php</title>
+    <title>Testes Automatizados com Php</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
