@@ -27,6 +27,7 @@ class Label implements LabelInterface
             $parametros .= $atributo . '=' . $valor . ' ';
         }
         echo '<label '. $parametros . '">' . $this->text . '</label>';
+        return true;
     }
     public function set($atributo, $valor)
     {

@@ -11,10 +11,29 @@ namespace FormDinamico\Classes;
 
 class FieldsetTest extends \PHPUnit_Framework_TestCase
 {
+    private $fieldSet;
+    private $input;
+
+    public function setUp()
+    {
+        $this->fieldSet = new Fieldset();
+        $this->input = new Input();
+    }
+
+    public function tearDown()
+    {
+        unset($this->fieldSet, $this->input);
+    }
+
     public function testSeFieldsetInterface()
     {
         $fieldSet = new Fieldset();
         $this->assertInstanceOf('FormDinamico\Interfaces\FieldsetInterface', $fieldSet);
+    }
+
+    public function testFuncionalSeFieldsetInterface()
+    {
+        $this->assertInstanceOf('FormDinamico\Interfaces\FieldsetInterface', $this->fieldSet);
     }
 
     public function testRetornaElementoInterface()
@@ -23,6 +42,12 @@ class FieldsetTest extends \PHPUnit_Framework_TestCase
         $input = $this->getMock('\FormDinamico\Classes\Input',array('render'));
         $elemento = $fieldSet->createField($input, array());
 
+        $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $elemento);
+    }
+
+    public function testFuncionalRetornaElementoInterface()
+    {
+        $elemento = $this->fieldSet->createField($this->input, array());
         $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $elemento);
     }
 
@@ -54,5 +79,11 @@ class FieldsetTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('Renderizado', $fieldSet->getFields()[0]->render());
 
+    }
+
+    public function testFuncionalFieldRender()
+    {
+        $this->fieldSet->createField($this->input, array('type'=>   'text'));
+        $this->assertEquals(true, $this->fieldSet->getFields()[0]->render());
     }
 } 

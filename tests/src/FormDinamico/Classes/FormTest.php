@@ -11,10 +11,29 @@ namespace FormDinamico\Classes;
 
 class FormTest extends \PHPUnit_Framework_TestCase
 {
+    private $form;
+    private $fieldSet;
+
+    public function setUp()
+    {
+        $this->form = new Form(array());
+        $this->fieldSet = new Fieldset();
+    }
+
+    public function tearDown()
+    {
+        unset($this->form, $this->fieldSet);
+    }
+
     public function testSeFormInterface()
     {
         $form = new Form(array());
         $this->assertInstanceOf('FormDinamico\Interfaces\FormInterface', $form);
+    }
+
+    public function testFuncionalSeFormInterface()
+    {
+        $this->assertInstanceOf('FormDinamico\Interfaces\FormInterface', $this->form);
     }
 
     public function testSeTemSetFieldset()
@@ -44,6 +63,12 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('valor', $form->get('atributo'));
     }
 
+    public function testFuncionalSetterAndGetter()
+    {
+        $this->form->set('atributo', 'valor');
+        $this->assertEquals('valor', $this->form->get('atributo'));
+    }
+
     public function testPopular()
     {
         $form = new Form(array());
@@ -51,6 +76,15 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $form->setFieldset($fieldSet);
         $parametro = array();
         $form->popular($parametro);
+
+        $this->assertTrue(is_array($parametro));
+    }
+
+    public function testFuncionalPopular()
+    {
+        $this->form->setFieldset($this->fieldSet);
+        $parametro = array();
+        $this->form->popular($parametro);
 
         $this->assertTrue(is_array($parametro));
     }

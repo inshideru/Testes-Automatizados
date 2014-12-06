@@ -28,6 +28,7 @@ class Input implements ElementoInterface
         }
         echo '<input ' . $parametros . '> ';
         echo '</div>';
+        return true;
     }
 
     public function set($atributo, $valor)

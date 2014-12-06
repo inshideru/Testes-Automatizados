@@ -41,6 +41,7 @@ class Select implements ElementoInterface
             }
         echo '</select>';
         echo '</div>';
+        return true;
     }
 
     public function set($atributo, $valor)

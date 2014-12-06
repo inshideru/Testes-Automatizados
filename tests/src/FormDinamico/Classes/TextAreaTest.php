@@ -11,10 +11,30 @@ namespace FormDinamico\Classes;
 
 class TextAreaTest extends \PHPUnit_Framework_TestCase
 {
+    private $textArea;
+    private $label;
+
+    public function setUp()
+    {
+        $this->textArea = new TextArea();
+        $this->label = new Label('Texto');
+        $this->textArea->addLabel($this->label);
+    }
+
+    public function tearDown()
+    {
+        unset($this->textArea, $this->label);
+    }
+
     public function testSeElementoInterface()
     {
         $textArea = new TextArea();
         $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $textArea);
+    }
+
+    public function testFuncionalSeElementoInterface()
+    {
+        $this->assertInstanceOf('FormDinamico\Interfaces\ElementoInterface', $this->textArea);
     }
 
     public function testAddLabelRetornaTextArea()
@@ -25,6 +45,12 @@ class TextAreaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('FormDinamico\Classes\TextArea', $textArea);
     }
+
+    public function testFuncionalAddLabelRetornaTextArea()
+    {
+        $this->assertInstanceOf('FormDinamico\Classes\TextArea', $this->textArea);
+    }
+
     public function testSetDivGroupClassRetornaTextArea()
     {
         $textArea = new TextArea();
@@ -32,6 +58,11 @@ class TextAreaTest extends \PHPUnit_Framework_TestCase
         $textArea = $textArea->setDivGroupClass($label);
 
         $this->assertInstanceOf('FormDinamico\Classes\TextArea', $textArea);
+    }
+
+    public function testFuncionalSetDivGroupClassRetornaTextArea()
+    {
+        $this->assertInstanceOf('FormDinamico\Classes\TextArea', $this->textArea);
     }
 
     public function testSeTemRender()

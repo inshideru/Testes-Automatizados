@@ -11,6 +11,20 @@ namespace FormDinamico\Classes;
 
 class OpcaoAgregatorTest extends \PHPUnit_Framework_TestCase
 {
+    private $opcao;
+    private $opcaoAgregator;
+
+    public function setUp()
+    {
+        $this->opcao = new Opcao();
+        $this->opcaoAgregator = new OpcaoAgregator();
+    }
+
+    public function tearDown()
+    {
+        unset($this->opcao, $this->opcaoAgregator);
+    }
+
     public function testFuncionamentoOpcaoAgregator()
     {
         $opcao = $this->getMock('\FormDinamico\Classes\Opcao', array('getCategoria'));
@@ -34,5 +48,14 @@ class OpcaoAgregatorTest extends \PHPUnit_Framework_TestCase
         $opcoes = $agregator->getOpcoes();
         $this->assertEquals('Texto', $opcoes[0]->getCategoria());
         $this->assertEquals('Texto2', $opcoes[1]->getCategoria());
+    }
+
+    public function testFuncionalFuncionamentoOpcaoAgregator()
+    {
+        $this->opcao->setCategoria('Texto');
+        $this->opcaoAgregator->addOpcao($this->opcao);
+
+        $opcoes = $this->opcaoAgregator->getOpcoes();
+        $this->assertEquals('Texto', $opcoes[0]->getCategoria());
     }
 } 

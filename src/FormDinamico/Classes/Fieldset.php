@@ -84,6 +84,7 @@ class Fieldset implements FieldsetInterface
             $field->render();
         }
         echo '</fieldset>';
+        return true;
     }
 
 }

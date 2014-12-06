@@ -8,6 +8,8 @@ use FormDinamico\Classes\Opcao;
 class OpcaoDAOTest extends \PHPUnit_Framework_TestCase
 {
     private $db;
+    private $opcao;
+    private $opcaoDAO;
 
     public function setUp()
     {
@@ -18,6 +20,9 @@ class OpcaoDAOTest extends \PHPUnit_Framework_TestCase
                   )";
 
         $this->db->exec($query);
+
+        $this->opcao = new Opcao();
+        $this->opcaoDAO = new OpcaoDAO();
     }
 
     public function tearDown()
@@ -27,15 +32,13 @@ class OpcaoDAOTest extends \PHPUnit_Framework_TestCase
 
     public function testVerficaInsertDeCategoria()
     {
-        $opcao = new Opcao();
-        $opcao->setId(1);
-        $opcao->setCategoria('Texto');
+        $this->opcao->setId(1);
+        $this->opcao->setCategoria('Texto');
 
-        $opcaoDAO = new OpcaoDAO();
-        $opcaoDAO->setDbAdapter($this->db);
+        $this->opcaoDAO->setDbAdapter($this->db);
 
-        $opcaoDAO->persist($opcao);
-        $opcaoDAO->flush();
+        $this->opcaoDAO->persist($this->opcao);
+        $this->opcaoDAO->flush();
 
         $stmt = $this->db->query("SELECT * FROM categoria");
         $this->assertEquals(1, count($stmt->fetchAll()));
@@ -49,10 +52,9 @@ class OpcaoDAOTest extends \PHPUnit_Framework_TestCase
 
     public function testVerificaSeTemAdaptadorDeBancoDeDados()
     {
-        $opcaoDAO = new OpcaoDAO();
-        $opcaoDAO->setDbAdapter(new \PDO('sqlite::memory:'));
+        $this->opcaoDAO->setDbAdapter($this->db);
 
-        $this->assertInstanceOf('\PDO', $opcaoDAO->getConnection());
+        $this->assertInstanceOf('\PDO', $this->opcaoDAO->getConnection());
 
     }
 
