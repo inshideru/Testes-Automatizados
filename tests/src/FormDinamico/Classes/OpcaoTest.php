@@ -51,4 +51,12 @@ class OpcaoTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(4, $this->opcao->getId());
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testSetCategoriaException()
+    {
+        $this->opcao->setCategoria(1);
+    }
+
 } 

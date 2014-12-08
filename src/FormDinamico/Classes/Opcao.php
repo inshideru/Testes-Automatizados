@@ -14,7 +14,7 @@ class Opcao
     public function setCategoria($categoria)
     {
         if (!is_string($categoria)) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException("O valor informado para categoria deve ser texto.");
         }
         $this->categoria = $categoria;
     }
